@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        <tr>
+            <th>Remove</th>
+            <th>Key</th>
+            <th>Assertion</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#rows}}
+        <tr>
+            <td>X</td>
+            <td>{{key}}</td>
+            <td>
+                <select class="assertion-select" data-key="{{key}}">
+                    <option value="notEmpty" selected>Not Empty</option>
+                    <option value="equalsTo">Equals to</option>
+                    <option value="shouldntExist">Shouldn't Exists</option>
+                </select>
+            </td>
+            <td>{{values.value}}</td>
+        </tr>
+        {{/rows}}
+    </tbody>
+</table>

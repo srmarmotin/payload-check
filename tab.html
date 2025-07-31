@@ -2,20 +2,44 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-	</head>
-
+		<script type="text/javascript" src="mustache.min.js"></script>
 	<body>
-		<h1>Net Checker</h1>
+		<h1>Tracking Watcher</h1>
 		<div>
-			<input type="text" id="urlActual" disabled />
+			<h3>
+				<span id="urlActual"></span>
+			</h3>
+		</div>
+		<div>
 			<input type="text" id="urlInput" placeholder="Enter URL to check" />
 			<button id="saveUrl">Check URL</button>
 		</div>
+        <div>
+            <select id="methodSelect">
+                <option>Add filter...</option>
+                <option value="filter">Add filter</option>
+                <option value="assertion">Add Assertion</option>
+                <option value="query">Add Query Params</option>
+            </select>
 		<div>
 			<input type="text" id="filterField" placeholder="Add field" />
 			<input type="text" id="filterValue" placeholder="Add Value" />
 			<button id="addFilterButton">Add Filter</button>
 		</div>
+		<div>
+			<textarea
+				id="queryList"
+				placeholder="Filter List"
+				rows="5"
+				cols="50"
+			></textarea>
+            <button id="addQueryButton">Add Filter</button>
+		</div>
+        <div id="debug">
+        </div>
+        <div id="filters">
+        </div>
+        
 		<!---<script src="panel.js"></script>--->
 		<script src="config.js"></script>
 	</body>

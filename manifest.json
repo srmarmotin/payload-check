@@ -1,0 +1,9 @@
+{
+	"name": "Payload Finder",
+	"description": "Search specific values inside payloads in network requests",
+	"version": "1.0",
+	"manifest_version": 3,
+	"devtools_page": "devtools.html",
+	"permissions": ["scripting", "activeTab"],
+	"host_permissions": ["https://saa.paramountplus.com/*"]
+}

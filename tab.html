@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<script type="text/javascript" src="mustache.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
 	<body>
 		<h1>Tracking Watcher</h1>
 		<div>
@@ -17,30 +18,43 @@
         <div>
             <select id="methodSelect">
                 <option>Add filter...</option>
-                <option value="filter">Add filter</option>
-                <option value="assertion">Add Assertion</option>
-                <option value="query">Add Query Params</option>
+                <option value="addFilter">Add Filter</option>
+                <option value="addAssertion">Add Assertion</option>
+                <option value="addQuery">Add Query Params</option>
             </select>
-		<div>
-			<input type="text" id="filterField" placeholder="Add field" />
+        </div>
+		<div id="addFilter" class="filter-section">
+			<input type="text" id="filterField" placeholder="Add Field" />
 			<input type="text" id="filterValue" placeholder="Add Value" />
 			<button id="addFilterButton">Add Filter</button>
 		</div>
-		<div>
+        <div id="addAssertion" class="filter-section">
+			<input type="text" id="assertionField" placeholder="Add field" />
+                <select class="assertion-select">
+                    <option value="notEmpty" selected>Not Empty</option>
+                    <option value="equalsTo">Equals to</option>
+                    <option value="shouldntExist">Shouldn't Exists</option>
+                </select>
+			<input type="text" id="assertionValue" placeholder="Add Value" />
+			<button id="addAssertionButton">Add Assertion</button>
+		</div>
+		<div id="addQuery" class="filter-section">
 			<textarea
 				id="queryList"
 				placeholder="Filter List"
 				rows="5"
 				cols="50"
 			></textarea>
-            <button id="addQueryButton">Add Filter</button>
+            <button id="addQueryButton">Add Query</button>
 		</div>
         <div id="debug">
         </div>
         <div id="filters">
         </div>
+        <div id="assertions">
+        </div>
         
-		<!---<script src="panel.js"></script>--->
+		<script src="tab.js"></script>
 		<script src="config.js"></script>
 	</body>
 </html>

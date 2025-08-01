@@ -1,3 +1,4 @@
+<button id="cleanTable">Clean Table</button>
 <table>
     <thead>
         <tr>
@@ -9,7 +10,7 @@
     </thead>
     <tbody>
         {{#rows}}
-        <tr>
+        <tr class="table-results" data-row="{{key}}">
             <td>X</td>
             <td>{{key}}</td>
             <td>
@@ -24,3 +25,12 @@
         {{/rows}}
     </tbody>
 </table>
+
+<!-- Single error popup for all rows -->
+<div id="error-popup" class="error-popup">
+    <div class="error-popup-content">
+        <strong>Assertion Failed</strong><br>
+        Expected: <span class="expected-value"></span><br>
+        Received: <span class="received-value"></span>
+    </div>
+</div>

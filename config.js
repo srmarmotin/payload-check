@@ -1,9 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
+	chrome.storage.local.remove(["apiUrl", "filters", "assertions"]);
+
 	document.getElementById("saveUrl").addEventListener("click", () => {
 		const url = document.getElementById("urlInput").value;
 		if (url) {
 			document.getElementById("urlActual").textContent = `Checking URL: ${url}`;
 			chrome.storage.local.set({ apiUrl: url });
+		}
+	});
+
+	document.getElementById("addFilter").addEventListener("click", () => {
+		const key = document.getElementById("filterField").value;
+		const value = document.getElementById("filterValue").value;
+
+		if (key && value) {
+			const filter = { key, value };
+
+			chrome.storage.local.get("filters", (data) => {
+				const filters = JSON.parse(data.filters || "[]");
+				filters.push(filter);
+				chrome.storage.local.set({ filters: JSON.stringify(filters) });
+			});
+
+			renderElement("filters", "filters.mustache", { filters: [filter] });
 		}
 	});
 
@@ -22,47 +41,34 @@ document.addEventListener("DOMContentLoaded", () => {
 					},
 				}));
 
-				const queryDataString = JSON.stringify(queryData);
-				chrome.storage.local.set({ assertions: queryDataString });
+				chrome.storage.local.set({ assertions: JSON.stringify(queryData) });
+				document.getElementById("queryList").value = "";
 
 				renderElement(
-					"filters",
+					"assertions",
 					"table.mustache",
 					{
 						rows: queryData,
 					},
-					listenForAssertionSelect
+					addTableListeners
 				);
 			}
 		}
 	});
 
-	function listenForAssertionSelect() {
-		Array.from(document.getElementsByClassName("assertion-select")).forEach(
-			(select) => {
-				select.addEventListener("change", (event) => {
-					const key = event.target.dataset.key;
-					const assertion = event.target.value;
+	document
+		.getElementById("methodSelect")
+		.addEventListener("change", function () {
+			const selectedValue = this.value;
 
-					chrome.storage.local.get("assertions", (data) => {
-						const assertions = JSON.parse(data.assertions || "[]");
-						const updatedAssertions = assertions.map((item) => {
-							if (item.key === key) {
-								return {
-									...item,
-									values: { ...item.values, assertion },
-								};
-							}
-							return item;
-						});
-						chrome.storage.local.set({
-							assertions: JSON.stringify(updatedAssertions),
-						});
-					});
-				});
-			}
-		);
-	}
+			Array.from(document.getElementsByClassName("filter-section")).forEach(
+				(section) => {
+					section.classList.remove("active");
+				}
+			);
+
+			document.getElementById(selectedValue).classList.add("active");
+		});
 
 	function validateUrl(url) {
 		try {
@@ -84,5 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
 					callback();
 				}
 			});
+	}
+
+	function addTableListeners() {
+		document.getElementById("cleanTable").addEventListener("click", () => {
+			Array.from(document.getElementsByClassName("table-results")).forEach(
+				(tr) => {
+					tr.classList.remove("success", "error");
+				}
+			);
+		});
 	}
 });

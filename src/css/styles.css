@@ -62,7 +62,6 @@ textarea {
 	max-width: 500px;
 }
 
-/* Button styles */
 button {
 	background-color: #4c6ef5;
 	border: none;
@@ -85,7 +84,6 @@ button:active {
 	transform: translateY(0);
 }
 
-/* Select dropdown styles */
 select {
 	cursor: pointer;
 	appearance: none;
@@ -96,7 +94,6 @@ select {
 	padding-right: 40px;
 }
 
-/* Table styles */
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -134,7 +131,6 @@ tbody tr:hover {
 	background-color: #323952;
 }
 
-/* Error and success row styles */
 tr.error {
 	background-color: rgba(255, 99, 99, 0.1);
 	border-left: 4px solid #ff6b6b;
@@ -153,13 +149,14 @@ tr.success:hover {
 	background-color: rgba(81, 207, 102, 0.15);
 }
 
-/* Remove button style */
 tr td:first-child {
 	cursor: pointer;
 	text-align: center;
 	font-weight: bold;
 	color: #ff6b6b;
 	transition: color 0.3s ease;
+	padding: 8px;
+	width: 60px;
 }
 
 tr td:first-child:hover {
@@ -167,20 +164,17 @@ tr td:first-child:hover {
 	background-color: rgba(255, 99, 99, 0.1);
 }
 
-/* Assertion select in table */
 table select {
 	max-width: 150px;
 	font-size: 12px;
 	padding: 6px 10px;
 }
 
-/* Container spacing */
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
 }
 
-/* Form row styling */
 .form-row {
 	display: flex;
 	gap: 10px;
@@ -193,9 +187,9 @@ table select {
 	max-width: 200px;
 }
 
-#addFilter,
-#addAssertion,
-#addQuery {
+#add-filter,
+#add-assertion,
+#add-query {
 	display: none;
 	margin-top: 15px;
 	padding: 20px;
@@ -204,14 +198,13 @@ table select {
 	border: 1px solid #3d4459;
 }
 
-#addFilter.active,
-#addAssertion.active,
-#addQuery.active {
+#add-filter.active,
+#add-assertion.active,
+#add-query.active {
 	display: block;
 }
 
-/* Filter pills styling */
-#filters {
+#filters-panel {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
@@ -223,7 +216,7 @@ table select {
 	min-height: 60px;
 }
 
-#filters:empty {
+#filter-panels:empty {
 	display: none;
 }
 
@@ -257,7 +250,7 @@ table select {
 	font-weight: 400;
 }
 
-.filter-value {
+.filter-val {
 	color: #d1d9f0;
 	font-weight: 400;
 }
@@ -285,7 +278,6 @@ table select {
 	transform: scale(1.1);
 }
 
-/* Error popup styles */
 .error-popup {
 	position: fixed;
 	display: none;
@@ -298,8 +290,6 @@ table select {
 	min-width: 200px;
 	pointer-events: none;
 }
-
-/* Remove the CSS hover rule since we'll handle it with JavaScript */
 
 .error-popup::before {
 	content: "";
@@ -325,7 +315,33 @@ table select {
 	font-size: 13px;
 }
 
-/* Make table rows position relative for popup positioning */
 tr.error {
 	position: relative;
+}
+
+.remove-row-btn {
+	background: #ff6b6b;
+	color: white;
+	border: none;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+	line-height: 1;
+}
+
+.remove-row-btn:hover {
+	background: #ff5252;
+	transform: scale(1.1);
+	box-shadow: 0 2px 6px rgba(255, 107, 107, 0.3);
+}
+
+.remove-row-btn:active {
+	transform: scale(0.95);
 }

@@ -1,9 +1,9 @@
 {
-	"name": "Net Checker",
+	"name": "Tracking Watcher",
 	"description": "Search specific values inside payloads in network requests",
 	"version": "1.0",
 	"manifest_version": 3,
-	"devtools_page": "devtools.html",
+	"devtools_page": "src/html/devtools.html",
 	"permissions": ["scripting", "activeTab", "storage"],
 	"host_permissions": ["<all_urls>"]
 }

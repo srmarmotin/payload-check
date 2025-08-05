@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<script type="text/javascript" src="../../lib/mustache.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<body>
+		<h1>Tracking Watcher</h1>
+		<div>
+			<h3>
+				<span id="actual-url"></span>
+			</h3>
+		</div>
+		<div>
+			<input type="text" id="input-url" placeholder="Enter URL to monitoring" />
+			<button id="save-url">Check URL</button>
+		</div>
+        <div>
+            <select id="select-method">
+                <option>Add Filter or Assertion...</option>
+                <option value="filter">Add Filter</option>
+                <option value="assertion">Add Assertion</option>
+                <option value="query">Add Query Params</option>
+            </select>
+        </div>
+		<div id="add-filter" class="config-section">
+            <form id="add-filter-form">
+                <input type="text" id="filter-field" placeholder="Add Field" />
+                <input type="text" id="filter-value" placeholder="Add Value" />
+                <button type="button" id="add-filter-button">Add Filter</button>
+            </form>
+		</div>
+        <div id="add-assertion" class="config-section">
+            <form id="add-assertion-form">
+			    <input type="text" id="assertion-field" placeholder="Add Field" />
+                <select id="assertion-type">
+                    <option value="equalsTo" selected>Equals to</option>
+                    <option value="notEmpty">Not Empty</option>
+                    <option value="shouldntExist">Shouldn't Exists</option>
+                </select>
+                <input type="text" id="assertion-value" placeholder="Add Value" class="assertion-value" />
+                <button type="button" id="add-assertion-button">Add Assertion</button>
+            </form>
+		</div>
+		<div id="add-query" class="config-section">
+            <form id="add-query-form">
+                <textarea
+                    id="query-params"
+                    placeholder="Add query params to monitor"
+                    rows="5"
+                    cols="50"
+                ></textarea>
+                <button type="button" id="add-query-button">Add Query</button>
+            </form>
+		</div>
+        <div id="debug-panel"></div>
+        <div id="filters-panel"></div>
+        <div id="results-panel"></div>
+
+		<script src="../js/tab.js"></script>
+		<script src="../js/config.js"></script>
+	</body>
+</html>

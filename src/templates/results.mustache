@@ -1,0 +1,47 @@
+<div class="results-container">
+	<div class="results-navigation">
+		<div class="nav-info">
+			<span id="current-result">0</span> / <span id="total-results">0</span>
+		</div>
+		<div class="nav-controls">
+			<button id="clean-result" class="clean-btn">Clean Results</button>
+			<button id="prev-result" class="nav-btn" title="Previous result">
+				‹
+			</button>
+			<button id="next-result" class="nav-btn" title="Next result">›</button>
+		</div>
+	</div>
+
+	<div id="results" class="results-tables">
+        <div class="result-table" data-result-index="0">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Remove</th>
+                        <th>Key</th>
+                        <th>Assertion</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#rows}}
+                    <tr class="table-results" data-row="{{key}}">
+                        <td class="remove-row" data-key="{{key}}">X</td>
+                        <td>{{key}}</td>
+                        <td>{{values.label}}</td>
+                        <td>{{values.value}}</td>
+                    </tr>
+                    {{/rows}}
+                </tbody>
+            </table>
+        </div>
+	</div>
+</div>
+
+<div id="error-popup" class="error-popup">
+	<div class="error-popup-content">
+		<strong>Assertion Failed</strong><br />
+		Expected: <span class="expected-value"></span><br />
+		Received: <span class="received-value"></span>
+	</div>
+</div>

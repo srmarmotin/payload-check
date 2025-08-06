@@ -4,15 +4,17 @@
                     <tr>
                         <th>Key</th>
                         <th>Assertion</th>
-                        <th>Value</th>
+                        <th>Expected</th>
+                        <th>Received</th>
                     </tr>
                 </thead>
                 <tbody>
                     {{#rows}}
-                    <tr class="table-results" data-row="{{key}}">
+                    <tr class="{{result}}" data-row="{{key}}">
                         <td>{{key}}</td>
                         <td>{{values.label}}</td>
                         <td>{{values.value}}</td>
+                        <td>{{received}}</td>
                     </tr>
                     {{/rows}}
                 </tbody>

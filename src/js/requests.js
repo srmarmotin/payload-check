@@ -1,15 +1,14 @@
 class Requests {
 	constructor() {
-		this.apiUrl = null;
 		this.requestFinishedListener();
 	}
 
 	async requestFinishedListener() {
 		chrome.devtools.network.onRequestFinished.addListener(async (request) => {
-			this.apiUrl = "https://saa.paramountplus.com/";
-			//this.apiUrl || (await Utils.getLocalStorage("apiUrl")).apiUrl;
-			if (request.request && request.request.url && this.apiUrl) {
-				if (request.request.url.startsWith(this.apiUrl)) {
+			const { apiUrl } = await chrome.storage.local.get("apiUrl");
+			console.log("Request finished:", apiUrl);
+			if (request.request && request.request.url && apiUrl) {
+				if (request.request.url.startsWith(apiUrl)) {
 					const url = new URL(request.request.url);
 					const params = new URLSearchParams(url.search);
 
@@ -72,7 +71,8 @@ class Requests {
 
 			return {
 				...assertion,
-				result: assertionResult,
+				result: assertionResult ? "success" : "error",
+				received: paramValue || "N/A",
 			};
 		});
 

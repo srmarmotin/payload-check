@@ -205,9 +205,9 @@ class Config {
 			let assertions = JSON.parse(data.assertions || "[]");
 			assertions = assertions.filter((assertion) => assertion.key !== key);
 
-			const rows = assertions.length ? assertions : {};
-
 			Utils.setLocalStorage({ assertions: JSON.stringify(assertions) }, () => {
+				const rows = assertions.length ? { rows: assertions } : {};
+
 				Utils.renderElement(
 					"results-panel",
 					Utils.TEMPLATES.table,

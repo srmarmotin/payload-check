@@ -294,12 +294,21 @@ tr.error {
 	background-color: #2a3142;
 	border-radius: 8px 8px 0 0;
 	border-bottom: 1px solid #3d4459;
+	margin-bottom: 0;
 }
 
 .nav-info {
 	font-size: 14px;
 	color: #9aa5c4;
 	font-weight: 500;
+}
+
+.nav-current {
+	font-size: 14px;
+	color: #9aa5c4;
+	font-weight: 500;
+	min-width: 60px;
+	text-align: center;
 }
 
 .nav-controls {
@@ -312,16 +321,16 @@ tr.error {
 	border: none;
 	border-radius: 6px;
 	color: white;
-	width: 32px;
-	height: 32px;
-	font-size: 18px;
-	font-weight: bold;
+	padding: 8px 12px;
+	font-size: 14px;
+	font-weight: 500;
 	cursor: pointer;
 	transition: all 0.2s ease;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	line-height: 1;
+	min-width: 80px;
 }
 
 .nav-btn:hover:not(.disabled) {

@@ -1,21 +1,22 @@
-        <div class="result-table" data-result-index="{{index}}">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Key</th>
-                        <th>Assertion</th>
-                        <th>Expected</th>
-                        <th>Received</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#rows}}
-                    <tr class="{{result}}" data-row="{{key}}">
-                        <td>{{key}}</td>
-                        <td>{{values.label}}</td>
-                        <td>{{values.value}}</td>
-                        <td>{{received}}</td>
-                    </tr>
-                    {{/rows}}
-                </tbody>
-            </table>
+<div class="result-table" data-result-index="{{index}}">
+    <table>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Assertion</th>
+                <th>Expected</th>
+                <th>Received</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#rows}}
+            <tr class="{{result}}" data-row="{{key}}">
+                <td>{{key}}</td>
+                <td>{{values.label}}</td>
+                <td>{{values.value}}</td>
+                <td>{{received}}</td>
+            </tr>
+            {{/rows}}
+        </tbody>
+    </table>
+</div>

@@ -1,19 +1,17 @@
 <div class="results-container">
 	<div class="results-navigation">
 		<div class="nav-info">
-			<span id="current-result">0</span> / <span id="total-results">0</span>
+			<span id="nav-current"></span>
 		</div>
 		<div class="nav-controls">
 			<button id="clean-result" class="clean-btn">Clean Results</button>
-			<button id="prev-result" class="nav-btn" title="Previous result">
-				‹
-			</button>
-			<button id="next-result" class="nav-btn" title="Next result">›</button>
+			<button id="prev-result" class="nav-btn disabled" title="Previous result">‹</button>
+			<button id="next-result" class="nav-btn disabled" title="Next result">›</button>
 		</div>
 	</div>
 
 	<div id="results" class="results-tables">
-        <div class="assertion-table" data-result-index="0">
+        <div class="assertion-table result-table" data-result-index="0">
             <table>
                 <thead>
                     <tr>

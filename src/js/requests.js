@@ -1,12 +1,13 @@
 class Requests {
 	constructor() {
 		this.requestFinishedListener();
+		this.navigation = new Navigation();
 	}
 
 	async requestFinishedListener() {
 		chrome.devtools.network.onRequestFinished.addListener(async (request) => {
 			const { apiUrl } = await chrome.storage.local.get("apiUrl");
-			console.log("Request finished:", apiUrl);
+
 			if (request.request && request.request.url && apiUrl) {
 				if (request.request.url.startsWith(apiUrl)) {
 					const url = new URL(request.request.url);
@@ -76,14 +77,19 @@ class Requests {
 			};
 		});
 
+		const index = Utils.getElement("result-table", null, "class")?.length || 0;
+
 		Utils.renderElement(
 			"results",
 			"../templates/table.mustache",
 			{
 				rows: results,
+				index: index,
 			},
 			null,
 			"append"
 		);
+
+		this.navigation.showResultAtIndex(index);
 	}
 }
